@@ -11,6 +11,12 @@ import {
   Award,
   CheckCircle,
   Star,
+  MapPin,
+  Mail,
+  Phone,
+  FileText,
+  ShieldCheck,
+  ArrowRight,
 } from "lucide-react";
 
 const trustBadges = [
@@ -53,21 +59,38 @@ const companyInfo = [
     icon: Factory,
     label: "Company Name",
     value: "MEJIAN GLOBAL TECHNOLOGY LIMITED",
+    isLink: false,
   },
   {
-    icon: Navigation,
-    label: "Address",
-    value: "Address to be updated",
+    icon: FileText,
+    label: "Business Registration Certificate Number",
+    value: "79695664-000-01-26-2",
+    isLink: false,
+    isCyan: true,
   },
   {
-    icon: ScrollText,
-    label: "Certificate No.",
-    value: "—",
+    icon: MapPin,
+    label: "Registered Business Address",
+    value: "Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong",
+    isLink: true,
+    link: "https://maps.google.com/?q=Unit+2610,+APEC+Plaza,+49+Hoi+Yuen+Road,+Kwun+Tong,+Hong+Kong",
+    isCyan: false,
   },
   {
-    icon: CalendarCheck,
-    label: "Valid",
-    value: "—",
+    icon: Mail,
+    label: "Email",
+    value: "info@mejianglobal.com",
+    isLink: true,
+    link: "mailto:info@mejianglobal.com",
+    isCyan: true,
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+852 47486175",
+    isLink: true,
+    link: "tel:+85247486175",
+    isCyan: false,
   },
 ];
 
@@ -241,36 +264,104 @@ const TrustSection = () => {
                 </div>
 
                 <div className="space-y-4">
-                  {companyInfo.map((info, index) => (
-                    <div
-                      key={info.label}
-                      ref={(el) => {
-                        infoRefs.current[index] = el;
-                      }}
-                      className="group/info flex gap-4 p-4 rounded-xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-lg"
-                    >
-                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/15 to-blue-500/15 flex items-center justify-center border border-cyan-500/30 group-hover/info:scale-110 transition-transform duration-300">
-                        <info.icon className="h-5 w-5 text-cyan-400" />
+                  {companyInfo.map((info, index) => {
+                    const Icon = info.icon;
+                    const isCyan = info.isCyan !== undefined ? info.isCyan : index % 2 === 0;
+                    const iconColorClass = isCyan ? "text-cyan-400" : "text-blue-400";
+                    const borderColorClass = isCyan
+                      ? "border-cyan-500/30 hover:border-cyan-500/50"
+                      : "border-blue-500/30 hover:border-blue-500/50";
+                    const gradientClass = isCyan
+                      ? "from-cyan-500/15 to-blue-500/15"
+                      : "from-blue-500/15 to-cyan-500/15";
+                    const hoverTextClass = isCyan
+                      ? "group-hover/info:text-cyan-300"
+                      : "group-hover/info:text-blue-300";
+                    const labelHoverClass = isCyan
+                      ? "group-hover/info:text-cyan-400"
+                      : "group-hover/info:text-blue-400";
+
+                    const content = (
+                      <>
+                        <div
+                          className={`flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br ${gradientClass} flex items-center justify-center border ${borderColorClass} group-hover/info:scale-110 transition-all duration-300`}
+                        >
+                          <Icon className={`h-5 w-5 ${iconColorClass} group-hover/info:drop-shadow-[0_0_8px_currentColor]`} />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p
+                            className={`text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5 ${labelHoverClass} transition-colors duration-300`}
+                          >
+                            {info.label}
+                          </p>
+                          <p
+                            className={`text-sm md:text-base text-slate-200 leading-relaxed font-medium ${hoverTextClass} transition-colors duration-300 break-words ${
+                              info.isLink ? "inline-flex items-center gap-2" : ""
+                            }`}
+                          >
+                            {info.value}
+                            {info.isLink && (
+                              <ArrowRight
+                                className={`h-3 w-3 ${iconColorClass} opacity-0 group-hover/info:opacity-100 transition-opacity duration-300 flex-shrink-0`}
+                              />
+                            )}
+                          </p>
+                        </div>
+                      </>
+                    );
+
+                    return (
+                      <div
+                        key={info.label}
+                        ref={(el) => {
+                          infoRefs.current[index] = el;
+                        }}
+                        className={`group/info flex gap-4 p-4 rounded-xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 ${borderColorClass} transition-all duration-300 hover:shadow-lg ${
+                          info.isLink ? "cursor-pointer" : ""
+                        }`}
+                      >
+                        {info.isLink ? (
+                          <a
+                            href={info.link}
+                            target={info.link?.startsWith("http") ? "_blank" : undefined}
+                            rel={
+                              info.link?.startsWith("http")
+                                ? "noopener noreferrer"
+                                : undefined
+                            }
+                            className="flex gap-4 w-full"
+                            onClick={(e) => {
+                              if (!info.link) e.preventDefault();
+                            }}
+                          >
+                            {content}
+                          </a>
+                        ) : (
+                          content
+                        )}
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5 group-hover/info:text-cyan-400 transition-colors duration-300">
-                          {info.label}
-                        </p>
-                        <p className="text-sm md:text-base text-slate-200 leading-relaxed font-medium">
-                          {info.value}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-slate-700/50">
-                  <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/25">
-                    <CheckCircle className="h-5 w-5 text-cyan-400 flex-shrink-0" />
+                <div className="mt-8 pt-6 border-t border-slate-700/50 space-y-3">
+                  <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/25 group/verified hover:border-cyan-500/40 hover:bg-gradient-to-r hover:from-cyan-500/15 hover:to-blue-500/15 transition-all duration-300">
+                    <CheckCircle className="h-5 w-5 text-cyan-400 flex-shrink-0 group-hover/verified:scale-110 transition-transform duration-300" />
                     <p className="text-sm font-medium text-slate-200">
                       <span className="text-cyan-400">Verified</span> and
                       committed to transparency
                     </p>
+                  </div>
+                  <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/25 group/reg hover:border-emerald-500/40 hover:bg-gradient-to-r hover:from-emerald-500/15 hover:to-teal-500/15 transition-all duration-300">
+                    <ShieldCheck className="h-5 w-5 text-emerald-400 flex-shrink-0 group-hover/reg:scale-110 transition-transform duration-300" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1 group-hover/reg:text-emerald-400 transition-colors duration-300">
+                        Registration Number
+                      </p>
+                      <p className="text-sm font-bold text-emerald-300 break-all">
+                        79695664-000-01-26-2
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

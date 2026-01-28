@@ -23,6 +23,7 @@ import {
   Clipboard,
   Star,
   MapPin,
+  ShieldCheck,
 } from "lucide-react";
 
 const footerLinks = {
@@ -143,26 +144,42 @@ const Footer = () => {
 
               <div className="space-y-3 mb-6">
                 <a
-                  href="mailto:contact@mejian.com"
-                  className="group/contact flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 hover:bg-slate-800/80 border border-slate-700/50 hover:border-cyan-500/40 transition-all duration-300 hover:translate-x-1"
+                  href="mailto:info@mejianglobal.com"
+                  className="group/contact flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 hover:bg-slate-800/80 border border-slate-700/50 hover:border-purple-500/40 transition-all duration-300 hover:translate-x-1"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center group-hover/contact:scale-105 transition-transform duration-300">
-                    <Mail className="h-4 w-4 text-cyan-400" />
+                  <div className="w-10 h-10 rounded-lg bg-purple-500/20 border border-purple-500/30 flex items-center justify-center group-hover/contact:scale-105 group-hover/contact:border-purple-500/50 transition-all duration-300">
+                    <Mail className="h-4 w-4 text-purple-400 group-hover/contact:drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]" />
                   </div>
-                  <span className="text-sm text-slate-300 group-hover/contact:text-cyan-300 transition-colors duration-300">
-                    contact@mejian.com
+                  <span className="text-sm text-slate-300 group-hover/contact:text-purple-300 transition-colors duration-300 break-all flex-1 min-w-0">
+                    info@mejianglobal.com
                   </span>
+                  <ArrowRight className="h-3 w-3 text-purple-400 opacity-0 group-hover/contact:opacity-100 transition-opacity duration-300 flex-shrink-0" />
                 </a>
                 <a
-                  href="tel:+8600000000"
-                  className="group/contact flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 hover:bg-slate-800/80 border border-slate-700/50 hover:border-cyan-500/40 transition-all duration-300 hover:translate-x-1"
+                  href="tel:+85247486175"
+                  className="group/contact flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 hover:bg-slate-800/80 border border-slate-700/50 hover:border-blue-500/40 transition-all duration-300 hover:translate-x-1"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center group-hover/contact:scale-105 transition-transform duration-300">
-                    <Phone className="h-4 w-4 text-blue-400" />
+                  <div className="w-10 h-10 rounded-lg bg-blue-500/20 border border-blue-500/30 flex items-center justify-center group-hover/contact:scale-105 group-hover/contact:border-blue-500/50 transition-all duration-300">
+                    <Phone className="h-4 w-4 text-blue-400 group-hover/contact:drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]" />
                   </div>
-                  <span className="text-sm text-slate-300 group-hover/contact:text-cyan-300 transition-colors duration-300">
-                    +86 0000 0000
+                  <span className="text-sm text-slate-300 group-hover/contact:text-blue-300 transition-colors duration-300">
+                    +852 47486175
                   </span>
+                  <ArrowRight className="h-3 w-3 text-blue-400 opacity-0 group-hover/contact:opacity-100 transition-opacity duration-300 flex-shrink-0" />
+                </a>
+                <a
+                  href="https://maps.google.com/?q=Unit+2610,+APEC+Plaza,+49+Hoi+Yuen+Road,+Kwun+Tong,+Hong+Kong"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/contact flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 hover:bg-slate-800/80 border border-slate-700/50 hover:border-emerald-500/40 transition-all duration-300 hover:translate-x-1"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center group-hover/contact:scale-105 group-hover/contact:border-emerald-500/50 transition-all duration-300">
+                    <MapPin className="h-4 w-4 text-emerald-400 group-hover/contact:drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
+                  </div>
+                  <span className="text-sm text-slate-300 group-hover/contact:text-emerald-300 transition-colors duration-300 leading-relaxed flex-1 min-w-0">
+                    Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong
+                  </span>
+                  <ArrowRight className="h-3 w-3 text-emerald-400 opacity-0 group-hover/contact:opacity-100 transition-opacity duration-300 flex-shrink-0" />
                 </a>
               </div>
 
@@ -274,30 +291,107 @@ const Footer = () => {
       <div className="relative border-t border-slate-800 bg-slate-900/40 backdrop-blur-sm">
         <div className="container mx-auto px-4 py-8">
           <div
-            className="flex flex-col md:flex-row items-center justify-between gap-6"
+            className="flex flex-col gap-6"
             style={{
               opacity: mounted ? 1 : 0,
               transition: "opacity 0.6s ease-out 0.5s",
             }}
           >
-            <div className="flex items-start gap-3 text-xs text-slate-500 max-w-3xl">
-              <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center mt-0.5">
-                <MapPin className="h-4 w-4 text-cyan-400" />
+            {/* Company Information */}
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center mt-0.5 group/company hover:scale-110 transition-transform duration-300">
+                    <Building2 className="h-5 w-5 text-cyan-400 group-hover/company:drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                      Company Name
+                    </p>
+                    <p className="text-sm font-bold text-slate-200 leading-relaxed">
+                      MEJIAN GLOBAL TECHNOLOGY LIMITED
+                    </p>
+                  </div>
+                </div>
+
+                <a
+                  href="https://maps.google.com/?q=Unit+2610,+APEC+Plaza,+49+Hoi+Yuen+Road,+Kwun+Tong,+Hong+Kong"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/address flex items-start gap-3"
+                >
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center mt-0.5 group-hover/address:scale-110 group-hover/address:border-emerald-500/50 transition-all duration-300">
+                    <MapPin className="h-5 w-5 text-emerald-400 group-hover/address:drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2 group-hover/address:text-emerald-400 transition-colors duration-300">
+                      Registered Business Address
+                    </p>
+                    <p className="text-sm text-slate-300 leading-relaxed group-hover/address:text-emerald-200 transition-colors duration-300">
+                      Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong
+                    </p>
+                    <div className="mt-2 flex items-center gap-2 opacity-0 group-hover/address:opacity-100 transition-opacity duration-300">
+                      <ArrowRight className="h-3 w-3 text-emerald-400" />
+                      <span className="text-xs text-emerald-400">View on Google Maps</span>
+                    </div>
+                  </div>
+                </a>
               </div>
-              <div className="leading-relaxed">
-                <span className="font-semibold text-slate-300">
-                  MEJIAN GLOBAL TECHNOLOGY LIMITED
-                </span>
-                <br />
-                <span>Address to be updated</span>
-                <br />
-                <span>Certificate & validity — to be updated</span>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center mt-0.5 group/reg hover:scale-110 transition-transform duration-300">
+                    <FileText className="h-5 w-5 text-cyan-400 group-hover/reg:drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                      Business Registration Certificate Number
+                    </p>
+                    <p className="text-sm font-bold text-cyan-300 leading-relaxed break-all">
+                      79695664-000-01-26-2
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center group/verified hover:scale-110 transition-transform duration-300">
+                    <ShieldCheck className="h-5 w-5 text-emerald-400 group-hover/verified:drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                      Status
+                    </p>
+                    <p className="text-sm font-semibold text-emerald-300">
+                      Verified Business
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 text-xs text-slate-500">
-              <Star className="h-3.5 w-3.5 text-cyan-400/60" />
-              <span>© {new Date().getFullYear()} All rights reserved.</span>
+            {/* Copyright */}
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-800">
+              <div className="flex items-center gap-2 text-xs text-slate-500">
+                <Star className="h-3.5 w-3.5 text-cyan-400/60" />
+                <span>© {new Date().getFullYear()} MEJIAN GLOBAL TECHNOLOGY LIMITED. All rights reserved.</span>
+              </div>
+              <div className="flex items-center gap-4 text-xs text-slate-500">
+                <a
+                  href="mailto:info@mejianglobal.com"
+                  className="flex items-center gap-1.5 hover:text-purple-400 transition-colors duration-300 group/email"
+                >
+                  <Mail className="h-3 w-3 group-hover/email:scale-110" />
+                  <span>info@mejianglobal.com</span>
+                </a>
+                <span className="text-slate-700">•</span>
+                <a
+                  href="tel:+85247486175"
+                  className="flex items-center gap-1.5 hover:text-blue-400 transition-colors duration-300 group/phone"
+                >
+                  <Phone className="h-3 w-3 group-hover/phone:scale-110" />
+                  <span>+852 47486175</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

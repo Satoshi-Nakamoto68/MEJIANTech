@@ -12,6 +12,11 @@ import {
   AlertTriangle,
   Gavel,
   Mail,
+  Phone,
+  MapPin,
+  ShieldCheck,
+  CheckCircle,
+  ArrowRight,
 } from "lucide-react";
 
 const Terms = () => {
@@ -37,20 +42,81 @@ const Terms = () => {
       icon: Building2,
       isCyan: false,
       content: (
-        <>
-          <strong className="text-cyan-300">Company Name:</strong>{" "}
-          <span className="text-slate-400">
-            MEJIAN GLOBAL TECHNOLOGY LIMITED
-          </span>
-          <br />
-          <strong className="text-blue-300">Address:</strong>{" "}
-          <span className="text-slate-400">Address to be updated</span>
-          <br />
-          <strong className="text-cyan-300">Registration No.:</strong>{" "}
-          <span className="text-slate-400">
-            Certificate & validity — to be updated
-          </span>
-        </>
+        <div className="space-y-4">
+          <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/30">
+            <div className="flex items-start gap-3 mb-3">
+              <Building2 className="h-5 w-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+              <div className="flex-1">
+                <strong className="text-cyan-300 block mb-1">Company Name:</strong>
+                <span className="text-slate-300 font-medium">
+                  MEJIAN GLOBAL TECHNOLOGY LIMITED
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/30">
+            <div className="flex items-start gap-3 mb-3">
+              <FileText className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
+              <div className="flex-1">
+                <strong className="text-emerald-300 block mb-1">Business Registration Certificate Number:</strong>
+                <span className="text-slate-300 font-medium break-all">
+                  79695664-000-01-26-2
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/30 hover:border-emerald-500/30 transition-colors duration-300">
+            <a
+              href="https://maps.google.com/?q=Unit+2610,+APEC+Plaza,+49+Hoi+Yuen+Road,+Kwun+Tong,+Hong+Kong"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-3 mb-3 group/link"
+            >
+              <MapPin className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5 group-hover/link:scale-110 transition-transform duration-300" />
+              <div className="flex-1">
+                <strong className="text-emerald-300 block mb-1">Registered Business Address:</strong>
+                <span className="text-slate-300 font-medium break-words group-hover/link:text-emerald-200 transition-colors duration-300 inline-flex items-center gap-2">
+                  Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong
+                  <ArrowRight className="h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/30 hover:border-purple-500/30 transition-colors duration-300">
+            <a
+              href="mailto:info@mejianglobal.com"
+              className="flex items-start gap-3 mb-3 group/link"
+            >
+              <Mail className="h-5 w-5 text-purple-400 flex-shrink-0 mt-0.5 group-hover/link:scale-110 transition-transform duration-300" />
+              <div className="flex-1">
+                <strong className="text-purple-300 block mb-1">Email:</strong>
+                <span className="text-slate-300 font-medium group-hover/link:text-purple-200 transition-colors duration-300 inline-flex items-center gap-2">
+                  info@mejianglobal.com
+                  <ArrowRight className="h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/30 hover:border-cyan-500/30 transition-colors duration-300">
+            <a
+              href="tel:+85247486175"
+              className="flex items-start gap-3 mb-3 group/link"
+            >
+              <Phone className="h-5 w-5 text-cyan-400 flex-shrink-0 mt-0.5 group-hover/link:scale-110 transition-transform duration-300" />
+              <div className="flex-1">
+                <strong className="text-cyan-300 block mb-1">Phone:</strong>
+                <span className="text-slate-300 font-medium group-hover/link:text-cyan-200 transition-colors duration-300 inline-flex items-center gap-2">
+                  +852 47486175
+                  <ArrowRight className="h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
       ),
     },
     {
@@ -99,16 +165,35 @@ const Terms = () => {
       icon: Mail,
       isCyan: false,
       content: (
-        <>
-          For questions about these Terms & Conditions, please contact us at{" "}
-          <a
-            href="mailto:contact@mejian.com"
-            className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 underline"
-          >
-            contact@mejian.com
-          </a>
-          .
-        </>
+        <div className="space-y-4">
+          <p className="text-slate-400">
+            For questions about these Terms & Conditions, please contact us:
+          </p>
+          <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/30 hover:border-purple-500/30 transition-colors duration-300">
+            <a
+              href="mailto:info@mejianglobal.com"
+              className="flex items-center gap-3 group/link"
+            >
+              <Mail className="h-5 w-5 text-purple-400 flex-shrink-0 group-hover/link:scale-110 transition-transform duration-300" />
+              <span className="text-purple-300 font-medium group-hover/link:text-purple-200 transition-colors duration-300 inline-flex items-center gap-2">
+                info@mejianglobal.com
+                <ArrowRight className="h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
+              </span>
+            </a>
+          </div>
+          <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/30 hover:border-cyan-500/30 transition-colors duration-300">
+            <a
+              href="tel:+85247486175"
+              className="flex items-center gap-3 group/link"
+            >
+              <Phone className="h-5 w-5 text-cyan-400 flex-shrink-0 group-hover/link:scale-110 transition-transform duration-300" />
+              <span className="text-cyan-300 font-medium group-hover/link:text-cyan-200 transition-colors duration-300 inline-flex items-center gap-2">
+                +852 47486175
+                <ArrowRight className="h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
+              </span>
+            </a>
+          </div>
+        </div>
       ),
     },
   ];
@@ -274,7 +359,7 @@ const Terms = () => {
                     <div>
                       <p className="text-sm text-slate-500">Last updated</p>
                       <p className="text-base font-semibold text-slate-100">
-                        January 2025
+                        January 2026
                       </p>
                     </div>
                   </div>
@@ -351,6 +436,28 @@ const Terms = () => {
                         </section>
                       );
                     })}
+                  </div>
+
+                  {/* Verification Badge Section */}
+                  <div className="mt-12 pt-8 border-t border-slate-700/50 space-y-4">
+                    <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/25 group/verified hover:border-cyan-500/40 hover:bg-gradient-to-r hover:from-cyan-500/15 hover:to-blue-500/15 transition-all duration-300">
+                      <CheckCircle className="h-5 w-5 text-cyan-400 flex-shrink-0 group-hover/verified:scale-110 transition-transform duration-300" />
+                      <p className="text-sm font-medium text-slate-200">
+                        <span className="text-cyan-400">Verified</span> and
+                        committed to transparency
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/25 group/reg hover:border-emerald-500/40 hover:bg-gradient-to-r hover:from-emerald-500/15 hover:to-teal-500/15 transition-all duration-300">
+                      <ShieldCheck className="h-5 w-5 text-emerald-400 flex-shrink-0 group-hover/reg:scale-110 transition-transform duration-300" />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1 group-hover/reg:text-emerald-400 transition-colors duration-300">
+                          Business Registration Certificate Number
+                        </p>
+                        <p className="text-sm font-bold text-emerald-300 break-all">
+                          79695664-000-01-26-2
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 

@@ -12,17 +12,16 @@ import {
   Globe,
   Mail,
   Phone,
+  FileText,
 } from "lucide-react";
 
 const companyInfo = {
   name: "MEJIAN GLOBAL TECHNOLOGY LIMITED",
   tagline: "Global Technology Solutions",
-  address: "",
-  addressPlaceholder: "Address coming soon",
-  email: "", // Placeholder - update later
-  emailPlaceholder: "Contact us",
-  phone: "", // Placeholder - update later
-  phonePlaceholder: "Hotline coming soon",
+  address: "Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong",
+  registrationNumber: "79695664-000-01-26-2",
+  email: "info@mejianglobal.com",
+  phone: "+852 47486175",
   status: "Verified Business",
 };
 
@@ -149,36 +148,36 @@ const TrustBar = () => {
             <div className="hidden lg:block w-px h-8 bg-slate-600/50 flex-shrink-0" />
 
             {/* Address */}
-            <div
-              className="flex items-center gap-2.5 group/address"
+            <a
+              href="https://maps.google.com/?q=Unit+2610,+APEC+Plaza,+49+Hoi+Yuen+Road,+Kwun+Tong,+Hong+Kong"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 group/address cursor-pointer"
               style={{
                 opacity: mounted ? 1 : 0,
                 transform: mounted ? "translateY(0)" : "translateY(-8px)",
                 transition:
                   "opacity 0.5s ease-out 0.2s, transform 0.5s cubic-bezier(0.4,0,0.2,1) 0.2s",
               }}
+              aria-label="View our location on Google Maps"
             >
               <MapPin
-                className="h-4 w-4 text-sky-400 flex-shrink-0 transition-transform duration-300 group-hover/address:scale-110"
+                className="h-4 w-4 text-emerald-400 flex-shrink-0 transition-transform duration-300 group-hover/address:scale-110 group-hover/address:text-emerald-300"
                 aria-hidden
               />
               <span
-                className={`text-[11px] sm:text-xs truncate max-w-[220px] sm:max-w-none transition-colors duration-300 ${
-                  companyInfo.address
-                    ? "text-slate-300 group-hover/address:text-sky-300"
-                    : "text-slate-500 italic"
-                }`}
-                title={companyInfo.address || companyInfo.addressPlaceholder}
+                className="text-[11px] sm:text-xs truncate max-w-[220px] sm:max-w-none transition-colors duration-300 text-slate-300 group-hover/address:text-emerald-300"
+                title={companyInfo.address}
               >
-                {companyInfo.address || companyInfo.addressPlaceholder}
+                {companyInfo.address}
               </span>
-            </div>
+            </a>
 
             <div className="hidden lg:block w-px h-8 bg-slate-600/50 flex-shrink-0" />
 
-            {/* Verified badge */}
+            {/* Verified badge with Registration Number */}
             <div
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 group/verified"
               style={{
                 opacity: mounted ? 1 : 0,
                 transform: mounted ? "translateY(0)" : "translateY(-8px)",
@@ -186,10 +185,13 @@ const TrustBar = () => {
                   "opacity 0.5s ease-out 0.3s, transform 0.5s cubic-bezier(0.4,0,0.2,1) 0.3s",
               }}
             >
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/5">
+              <div 
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/5 hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300 relative group/badge"
+                title={`Registration: ${companyInfo.registrationNumber}`}
+              >
                 <div className="relative">
                   <Shield
-                    className="h-4 w-4 text-emerald-400"
+                    className="h-4 w-4 text-emerald-400 transition-transform duration-300 group-hover/badge:scale-110"
                     aria-hidden
                   />
                   <span
@@ -201,12 +203,25 @@ const TrustBar = () => {
                 <span className="text-[11px] sm:text-xs font-semibold text-emerald-400/90">
                   {companyInfo.status}
                 </span>
+                {/* Tooltip for registration number on smaller screens */}
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded-lg border border-cyan-500/30 bg-slate-900/95 backdrop-blur-xl text-[10px] font-semibold text-cyan-400/90 whitespace-nowrap opacity-0 group-hover/badge:opacity-100 transition-opacity duration-300 pointer-events-none z-50 xl:hidden">
+                  Reg: {companyInfo.registrationNumber}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
+                    <div className="border-4 border-transparent border-t-cyan-500/30" />
+                  </div>
+                </div>
+              </div>
+              <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all duration-300 group/reg">
+                <FileText className="h-3 w-3 text-cyan-400 transition-transform duration-300 group-hover/reg:scale-110" aria-hidden />
+                <span className="text-[10px] font-semibold text-cyan-400/90 truncate max-w-[140px]">
+                  {companyInfo.registrationNumber}
+                </span>
               </div>
             </div>
 
             <div className="hidden lg:block w-px h-8 bg-slate-600/50 flex-shrink-0" />
 
-            {/* Contact: email & phone placeholders */}
+            {/* Contact: email & phone */}
             <div
               className="flex flex-wrap items-center gap-3 sm:gap-4"
               style={{
@@ -216,42 +231,22 @@ const TrustBar = () => {
                   "opacity 0.5s ease-out 0.4s, transform 0.5s cubic-bezier(0.4,0,0.2,1) 0.4s",
               }}
             >
-              {companyInfo.email ? (
-                <a
-                  href={`mailto:${companyInfo.email}`}
-                  className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-400 hover:text-cyan-400 transition-colors duration-300 group/email"
-                  aria-label={`Email us at ${companyInfo.email}`}
-                >
-                  <Mail className="h-3.5 w-3.5 flex-shrink-0 transition-transform duration-300 group-hover/email:scale-110" />
-                  <span className="truncate max-w-[140px]">{companyInfo.email}</span>
-                </a>
-              ) : (
-                <span
-                  className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-500 italic"
-                  aria-label="Contact email coming soon"
-                >
-                  <Mail className="h-3.5 w-3.5 flex-shrink-0" />
-                  <span className="truncate max-w-[140px]">{companyInfo.emailPlaceholder}</span>
-                </span>
-              )}
-              {companyInfo.phone ? (
-                <a
-                  href={`tel:${companyInfo.phone}`}
-                  className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-400 hover:text-cyan-400 transition-colors duration-300 group/phone"
-                  aria-label={`Call us at ${companyInfo.phone}`}
-                >
-                  <Phone className="h-3.5 w-3.5 flex-shrink-0 transition-transform duration-300 group-hover/phone:scale-110" />
-                  <span className="truncate max-w-[120px]">{companyInfo.phone}</span>
-                </a>
-              ) : (
-                <span
-                  className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-500 italic"
-                  aria-label="Hotline coming soon"
-                >
-                  <Phone className="h-3.5 w-3.5 flex-shrink-0" />
-                  <span className="truncate max-w-[120px]">{companyInfo.phonePlaceholder}</span>
-                </span>
-              )}
+              <a
+                href={`mailto:${companyInfo.email}`}
+                className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-400 hover:text-purple-400 transition-colors duration-300 group/email"
+                aria-label={`Email us at ${companyInfo.email}`}
+              >
+                <Mail className="h-3.5 w-3.5 flex-shrink-0 transition-transform duration-300 group-hover/email:scale-110 group-hover/email:text-purple-400" />
+                <span className="truncate max-w-[160px] sm:max-w-[200px]">{companyInfo.email}</span>
+              </a>
+              <a
+                href={`tel:${companyInfo.phone.replace(/\s/g, '')}`}
+                className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-400 hover:text-blue-400 transition-colors duration-300 group/phone"
+                aria-label={`Call us at ${companyInfo.phone}`}
+              >
+                <Phone className="h-3.5 w-3.5 flex-shrink-0 transition-transform duration-300 group-hover/phone:scale-110 group-hover/phone:text-blue-400" />
+                <span className="truncate max-w-[120px] sm:max-w-[140px]">{companyInfo.phone}</span>
+              </a>
             </div>
           </div>
         </div>

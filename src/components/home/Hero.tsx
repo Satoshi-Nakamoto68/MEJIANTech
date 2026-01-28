@@ -186,7 +186,7 @@ const Hero = () => {
               >
                 <Rocket className="h-4 w-4 text-cyan-400 group-hover/new:scale-110 group-hover/new:rotate-12 transition-all duration-300" />
                 <span className="text-sm font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                  Est. 2025 • Innovation Leader
+                  Est. 2026 • Innovation Leader
                 </span>
                 <Sparkles className="h-3 w-3 text-cyan-400 animate-pulse" />
               </div>
@@ -235,7 +235,7 @@ const Hero = () => {
                 transition: "opacity 0.7s ease-out 0.6s, transform 0.7s cubic-bezier(0.4,0,0.2,1) 0.6s",
               }}
             >
-              Premium technology accessories and smart home solutions. Founded in 2025, MEJIAN brings you{" "}
+              Premium technology accessories and smart home solutions. Founded in 2026, MEJIAN brings you{" "}
               <span className="font-semibold text-cyan-400">cutting-edge</span> computer accessories,{" "}
               <span className="font-semibold text-blue-400">innovative</span> phone accessories, and{" "}
               <span className="font-semibold text-cyan-400">intelligent</span> smart home devices.
@@ -251,7 +251,7 @@ const Hero = () => {
               }}
             >
               {[
-                { icon: Rocket, value: "2025", label: "Established", isCyan: true },
+                { icon: Rocket, value: "2026", label: "Established", isCyan: true },
                 { icon: Sparkles, value: "500+", label: "Products", isCyan: false },
                 { icon: Globe2, value: "Global", label: "Shipping", isCyan: true },
                 { icon: Award, value: "100%", label: "Quality", isCyan: false },

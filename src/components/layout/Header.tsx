@@ -15,6 +15,11 @@ import {
   Mail,
   Phone,
   Globe2,
+  FileText,
+  MapPin,
+  ShieldCheck,
+  ArrowRight,
+  Building2,
 } from "lucide-react";
 
 const companyName = "MEJIAN Global Technology";
@@ -367,42 +372,101 @@ const Header = () => {
                 </div>
 
                 <div className="p-4 space-y-3">
-                  {[
-                    {
-                      icon: Shield,
-                      title: "MEJIAN Global Technology",
-                      desc: "Verified Business · Certificate details coming soon",
-                    },
-                    {
-                      icon: Star,
-                      title: "Quality Assured",
-                      desc: "Premium materials & verified suppliers",
-                    },
-                  ].map(({ icon: Icon, title, desc }, idx) => (
-                    <div
-                      key={title}
-                      className="flex items-start gap-3"
-                      style={
-                        trustDropdownOpen
-                          ? {
-                              animation: `headerDropdownItem 0.35s ease-out ${0.2 + idx * 0.05}s both`,
-                            }
-                          : undefined
-                      }
-                    >
-                      <div className="p-2 rounded-lg bg-cyan-500/10 flex-shrink-0">
-                        <Icon className="h-5 w-5 text-cyan-400" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs font-semibold text-slate-100 mb-0.5">
-                          {title}
-                        </p>
-                        <p className="text-[10px] text-slate-400 leading-relaxed">
-                          {desc}
-                        </p>
-                      </div>
+                  <div
+                    className="flex items-start gap-3"
+                    style={
+                      trustDropdownOpen
+                        ? {
+                            animation: `headerDropdownItem 0.35s ease-out 0.2s both`,
+                          }
+                        : undefined
+                    }
+                  >
+                    <div className="p-2 rounded-lg bg-cyan-500/10 flex-shrink-0">
+                      <Shield className="h-5 w-5 text-cyan-400" />
                     </div>
-                  ))}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-semibold text-slate-100 mb-0.5">
+                        MEJIAN Global Technology
+                      </p>
+                      <p className="text-[10px] text-slate-400 leading-relaxed">
+                        Verified Business · Registered Company
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    className="flex items-start gap-3 p-2 rounded-lg bg-emerald-500/5 border border-emerald-500/20 hover:bg-emerald-500/10 transition-colors duration-200 group/reg"
+                    style={
+                      trustDropdownOpen
+                        ? {
+                            animation: `headerDropdownItem 0.35s ease-out 0.25s both`,
+                          }
+                        : undefined
+                    }
+                  >
+                    <div className="p-2 rounded-lg bg-emerald-500/15 flex-shrink-0 group-hover/reg:scale-110 transition-transform duration-200">
+                      <FileText className="h-5 w-5 text-emerald-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-semibold text-emerald-300 mb-0.5">
+                        Business Registration
+                      </p>
+                      <p className="text-[10px] text-emerald-200/80 leading-relaxed break-all">
+                        79695664-000-01-26-2
+                      </p>
+                    </div>
+                  </div>
+
+                  <a
+                    href="https://maps.google.com/?q=Unit+2610,+APEC+Plaza,+49+Hoi+Yuen+Road,+Kwun+Tong,+Hong+Kong"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 p-2 rounded-lg bg-emerald-500/5 border border-emerald-500/20 hover:bg-emerald-500/10 transition-all duration-200 group/addr"
+                    style={
+                      trustDropdownOpen
+                        ? {
+                            animation: `headerDropdownItem 0.35s ease-out 0.3s both`,
+                          }
+                        : undefined
+                    }
+                  >
+                    <div className="p-2 rounded-lg bg-emerald-500/15 flex-shrink-0 group-hover/addr:scale-110 transition-transform duration-200">
+                      <MapPin className="h-5 w-5 text-emerald-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-semibold text-emerald-300 mb-0.5 group-hover/addr:text-emerald-200 transition-colors duration-200">
+                        Registered Address
+                      </p>
+                      <p className="text-[10px] text-emerald-200/80 leading-relaxed break-words group-hover/addr:text-emerald-100 transition-colors duration-200">
+                        Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong
+                      </p>
+                    </div>
+                    <ArrowRight className="h-3.5 w-3.5 text-emerald-400 opacity-0 group-hover/addr:opacity-100 transition-opacity duration-200 flex-shrink-0 mt-1" />
+                  </a>
+
+                  <div
+                    className="flex items-start gap-3"
+                    style={
+                      trustDropdownOpen
+                        ? {
+                            animation: `headerDropdownItem 0.35s ease-out 0.35s both`,
+                          }
+                        : undefined
+                    }
+                  >
+                    <div className="p-2 rounded-lg bg-cyan-500/10 flex-shrink-0">
+                      <Star className="h-5 w-5 text-cyan-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-semibold text-slate-100 mb-0.5">
+                        Quality Assured
+                      </p>
+                      <p className="text-[10px] text-slate-400 leading-relaxed">
+                        Premium materials & verified suppliers
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 <div
@@ -410,7 +474,7 @@ const Header = () => {
                   style={
                     trustDropdownOpen
                       ? {
-                          animation: "headerDropdownItem 0.35s ease-out 0.35s both",
+                          animation: "headerDropdownItem 0.35s ease-out 0.4s both",
                         }
                       : undefined
                   }
@@ -418,14 +482,22 @@ const Header = () => {
                   <p className="text-xs font-semibold text-slate-100 mb-2">
                     Quick Contact
                   </p>
-                  <span className="flex items-center gap-2 text-xs text-slate-500 italic">
-                    <Mail className="h-3.5 w-3.5 flex-shrink-0" />
-                    Contact us (coming soon)
-                  </span>
-                  <span className="flex items-center gap-2 text-xs text-slate-500 italic">
-                    <Phone className="h-3.5 w-3.5 flex-shrink-0" />
-                    Hotline coming soon
-                  </span>
+                  <a
+                    href="mailto:info@mejianglobal.com"
+                    className="flex items-center gap-2 text-xs text-purple-300 hover:text-purple-200 transition-colors duration-200 group/email"
+                  >
+                    <Mail className="h-3.5 w-3.5 flex-shrink-0 group-hover/email:scale-110 transition-transform duration-200" />
+                    <span className="flex-1">info@mejianglobal.com</span>
+                    <ArrowRight className="h-3 w-3 opacity-0 group-hover/email:opacity-100 transition-opacity duration-200" />
+                  </a>
+                  <a
+                    href="tel:+85247486175"
+                    className="flex items-center gap-2 text-xs text-cyan-300 hover:text-cyan-200 transition-colors duration-200 group/phone"
+                  >
+                    <Phone className="h-3.5 w-3.5 flex-shrink-0 group-hover/phone:scale-110 transition-transform duration-200" />
+                    <span className="flex-1">+852 47486175</span>
+                    <ArrowRight className="h-3 w-3 opacity-0 group-hover/phone:opacity-100 transition-opacity duration-200" />
+                  </a>
                 </div>
               </div>
             </div>

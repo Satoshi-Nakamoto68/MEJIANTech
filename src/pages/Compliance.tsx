@@ -12,6 +12,10 @@ import {
   MapPin,
   Calendar,
   Briefcase,
+  Phone,
+  Mail,
+  ShieldCheck,
+  ArrowRight,
 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
@@ -19,13 +23,15 @@ const documents = [
   {
     name: "Business Registration Certificate",
     status: "Available",
-    placeholder: true,
+    code: "79695664-000-01-26-2",
+    placeholder: false,
     isCyan: true,
   },
   {
     name: "Proof of Address",
     status: "Available",
-    placeholder: true,
+    address: "Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong",
+    placeholder: false,
     isCyan: false,
   },
   {
@@ -47,21 +53,46 @@ const companyInfo = [
     icon: Building2,
     label: "Company Name",
     value: "MEJIAN GLOBAL TECHNOLOGY LIMITED",
+    isLink: false,
+    isCyan: true,
   },
   {
-    icon: FileCheck,
-    label: "Registration Number",
-    value: "Certificate & validity — to be updated",
+    icon: FileText,
+    label: "Business Registration Certificate Number",
+    value: "79695664-000-01-26-2",
+    isLink: false,
+    isCyan: false,
   },
   {
     icon: MapPin,
-    label: "Registered Address",
-    value: "Address to be updated",
+    label: "Registered Business Address",
+    value: "Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong",
+    isLink: true,
+    link: "https://maps.google.com/?q=Unit+2610,+APEC+Plaza,+49+Hoi+Yuen+Road,+Kwun+Tong,+Hong+Kong",
+    isCyan: true,
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "info@mejianglobal.com",
+    isLink: true,
+    link: "mailto:info@mejianglobal.com",
+    isCyan: false,
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+852 47486175",
+    isLink: true,
+    link: "tel:+85247486175",
+    isCyan: true,
   },
   {
     icon: Calendar,
     label: "Established",
-    value: "2025",
+    value: "2026",
+    isLink: false,
+    isCyan: false,
   },
 ];
 
@@ -277,26 +308,128 @@ const Compliance = () => {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {companyInfo.map((info, index) => (
-                      <div
-                        key={info.label}
-                        className="group/item p-4 rounded-xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/30 hover:border-cyan-500/30 transition-all duration-300"
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/10 to-blue-500/10 flex items-center justify-center border border-cyan-500/20 group-hover/item:scale-110 transition-transform duration-300">
-                            <info.icon className="h-5 w-5 text-cyan-400" />
+                    {companyInfo.map((info, index) => {
+                      const Icon = info.icon;
+                      const isCyan = info.isCyan !== undefined ? info.isCyan : index % 2 === 0;
+                      const iconColorClass = isCyan ? "text-cyan-400" : info.icon === Mail ? "text-purple-400" : info.icon === Phone ? "text-cyan-400" : info.icon === FileText ? "text-emerald-400" : "text-blue-400";
+                      const borderColorClass = isCyan
+                        ? "border-cyan-500/30 hover:border-cyan-500/50"
+                        : info.icon === Mail
+                        ? "border-purple-500/30 hover:border-purple-500/50"
+                        : info.icon === FileText
+                        ? "border-emerald-500/30 hover:border-emerald-500/50"
+                        : "border-blue-500/30 hover:border-blue-500/50";
+                      const gradientClass = isCyan
+                        ? "from-cyan-500/10 to-blue-500/10"
+                        : info.icon === Mail
+                        ? "from-purple-500/10 to-pink-500/10"
+                        : info.icon === FileText
+                        ? "from-emerald-500/10 to-teal-500/10"
+                        : "from-blue-500/10 to-cyan-500/10";
+                      const hoverTextClass = isCyan
+                        ? "group-hover/item:text-cyan-200"
+                        : info.icon === Mail
+                        ? "group-hover/item:text-purple-200"
+                        : info.icon === FileText
+                        ? "group-hover/item:text-emerald-200"
+                        : "group-hover/item:text-blue-200";
+                      const labelHoverClass = isCyan
+                        ? "group-hover/item:text-cyan-400"
+                        : info.icon === Mail
+                        ? "group-hover/item:text-purple-400"
+                        : info.icon === FileText
+                        ? "group-hover/item:text-emerald-400"
+                        : "group-hover/item:text-blue-400";
+                      const iconBorderClass = isCyan
+                        ? "border-cyan-500/20"
+                        : info.icon === Mail
+                        ? "border-purple-500/20"
+                        : info.icon === FileText
+                        ? "border-emerald-500/20"
+                        : "border-blue-500/20";
+
+                      const content = (
+                        <>
+                          <div
+                            className={`flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br ${gradientClass} flex items-center justify-center border ${iconBorderClass} group-hover/item:scale-110 transition-all duration-300`}
+                          >
+                            <Icon
+                              className={`h-5 w-5 ${iconColorClass} group-hover/item:drop-shadow-[0_0_8px_currentColor]`}
+                            />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2 group-hover/item:text-cyan-400 transition-colors duration-300">
+                            <p
+                              className={`text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2 ${labelHoverClass} transition-colors duration-300`}
+                            >
                               {info.label}
                             </p>
-                            <p className="text-sm md:text-base text-slate-100 font-medium leading-relaxed">
+                            <p
+                              className={`text-sm md:text-base text-slate-100 font-medium leading-relaxed ${hoverTextClass} transition-colors duration-300 break-words ${
+                                info.isLink ? "inline-flex items-center gap-2" : ""
+                              }`}
+                            >
                               {info.value}
+                              {info.isLink && (
+                                <ArrowRight
+                                  className={`h-4 w-4 ${iconColorClass} opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex-shrink-0`}
+                                />
+                              )}
                             </p>
                           </div>
+                        </>
+                      );
+
+                      return (
+                        <div
+                          key={info.label}
+                          className={`group/item p-4 rounded-xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/30 ${borderColorClass} transition-all duration-300 ${
+                            info.isLink ? "cursor-pointer hover:shadow-lg" : ""
+                          }`}
+                        >
+                          {info.isLink ? (
+                            <a
+                              href={info.link}
+                              target={info.link?.startsWith("http") ? "_blank" : undefined}
+                              rel={
+                                info.link?.startsWith("http")
+                                  ? "noopener noreferrer"
+                                  : undefined
+                              }
+                              className="flex items-start gap-3 w-full"
+                              onClick={(e) => {
+                                if (!info.link) e.preventDefault();
+                              }}
+                            >
+                              {content}
+                            </a>
+                          ) : (
+                            <div className="flex items-start gap-3">{content}</div>
+                          )}
                         </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* Verification Badge Section */}
+                  <div className="mt-8 pt-8 border-t border-slate-700/50 space-y-4">
+                    <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/25 group/verified hover:border-cyan-500/40 hover:bg-gradient-to-r hover:from-cyan-500/15 hover:to-blue-500/15 transition-all duration-300">
+                      <CheckCircle className="h-5 w-5 text-cyan-400 flex-shrink-0 group-hover/verified:scale-110 transition-transform duration-300" />
+                      <p className="text-sm font-medium text-slate-200">
+                        <span className="text-cyan-400">Verified</span> and
+                        committed to transparency
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/25 group/reg hover:border-emerald-500/40 hover:bg-gradient-to-r hover:from-emerald-500/15 hover:to-teal-500/15 transition-all duration-300">
+                      <ShieldCheck className="h-5 w-5 text-emerald-400 flex-shrink-0 group-hover/reg:scale-110 transition-transform duration-300" />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1 group-hover/reg:text-emerald-400 transition-colors duration-300">
+                          Business Registration Certificate Number
+                        </p>
+                        <p className="text-sm font-bold text-emerald-300 break-all">
+                          79695664-000-01-26-2
+                        </p>
                       </div>
-                    ))}
+                    </div>
                   </div>
                 </div>
 
@@ -365,9 +498,19 @@ const Compliance = () => {
                             <p className="font-medium text-slate-100 text-sm mb-1 group-hover/doc:text-cyan-200 transition-colors duration-300">
                               {doc.name}
                             </p>
-                            <p className="text-xs text-slate-500">
-                              PDF [placeholder]
-                            </p>
+                            {doc.code ? (
+                              <p className="text-xs text-emerald-300 font-semibold break-all">
+                                {doc.code}
+                              </p>
+                            ) : doc.address ? (
+                              <p className="text-xs text-emerald-300 break-words">
+                                {doc.address}
+                              </p>
+                            ) : (
+                              <p className="text-xs text-slate-500">
+                                PDF [placeholder]
+                              </p>
+                            )}
                           </div>
                         </div>
                         <button
@@ -424,6 +567,29 @@ const Compliance = () => {
                     Fill out this form to receive our complete verification
                     documentation package.
                   </p>
+                  <div className="mb-6 p-4 rounded-xl bg-slate-800/50 border border-slate-700/30">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">
+                      Direct Contact
+                    </p>
+                    <div className="space-y-2">
+                      <a
+                        href="mailto:info@mejianglobal.com"
+                        className="flex items-center gap-2 text-sm text-purple-300 hover:text-purple-200 transition-colors duration-300 group/link"
+                      >
+                        <Mail className="h-4 w-4 group-hover/link:scale-110 transition-transform duration-300" />
+                        <span>info@mejianglobal.com</span>
+                        <ArrowRight className="h-3 w-3 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
+                      </a>
+                      <a
+                        href="tel:+85247486175"
+                        className="flex items-center gap-2 text-sm text-cyan-300 hover:text-cyan-200 transition-colors duration-300 group/link"
+                      >
+                        <Phone className="h-4 w-4 group-hover/link:scale-110 transition-transform duration-300" />
+                        <span>+852 47486175</span>
+                        <ArrowRight className="h-3 w-3 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
+                      </a>
+                    </div>
+                  </div>
 
                   {submitted ? (
                     <div className="text-center py-8">
