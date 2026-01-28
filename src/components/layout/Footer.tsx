@@ -119,20 +119,71 @@ const Footer = () => {
             >
               <Link
                 to="/"
-                className="inline-flex items-center gap-3 mb-6 group/logo focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:ring-offset-2 focus:ring-offset-slate-950 rounded-xl"
+                className="inline-block mb-6 group/logo focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:ring-offset-2 focus:ring-offset-slate-950 rounded-xl"
               >
-                <div className="relative">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/25 group-hover/logo:scale-105 group-hover/logo:shadow-cyan-500/40 transition-all duration-300">
-                    <span className="text-white font-bold text-xl">M</span>
+                <div className="relative inline-block">
+                  {/* Outer glow ring */}
+                  <div className="absolute -inset-4 bg-gradient-to-r from-cyan-400 via-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover/logo:opacity-100 blur-2xl transition-opacity duration-700 rounded-2xl animate-pulse-slow" />
+
+                  {/* Inner glow */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/50 to-cyan-500/0 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+                  {/* Logo image container */}
+                  <div className="relative">
+                    {/* Glow backdrop */}
+                    <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/30 via-blue-400/30 via-purple-400/30 to-pink-400/30 opacity-0 group-hover/logo:opacity-100 blur-lg transition-opacity duration-500 rounded-2xl" />
+
+                    {/* Logo image with white background */}
+                    <div className="relative bg-white rounded-2xl shadow-2xl border-[4px] border-cyan-400/30 group-hover/logo:border-cyan-400/80 transition-all duration-500 group-hover/logo:shadow-[0_0_50px_rgba(56,189,248,1)] group-hover/logo:scale-[1.04] h-[80px] sm:h-[96px] md:h-[112px] lg:h-[120px] px-6 sm:px-8 md:px-10 lg:px-12 min-w-[200px] sm:min-w-[240px] md:min-w-[280px] lg:min-w-[320px] flex items-center justify-center">
+                      {/* White background base */}
+                      <div className="absolute inset-0 bg-white rounded-2xl" />
+
+                      {/* Subtle gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-slate-50/30 rounded-2xl opacity-95" />
+
+                      {/* Shimmer overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-0 group-hover/logo:opacity-100 -translate-x-full group-hover/logo:translate-x-full transition-all duration-1000 rounded-2xl" />
+
+                      {/* Animated border glow */}
+                      <div className="absolute -inset-1 rounded-2xl border-[4px] border-cyan-400/0 group-hover/logo:border-cyan-400/80 transition-all duration-500 pointer-events-none opacity-0 group-hover/logo:opacity-100" />
+
+                      {/* Logo image */}
+                      <div className="relative z-10 flex items-center justify-center h-full w-full">
+                        <img
+                          src="/logo-mejian.png"
+                          alt="MEJIAN Global Technology Logo"
+                          className="h-[56px] sm:h-[68px] md:h-[80px] lg:h-[88px] w-auto max-w-full object-contain transition-all duration-500 group-hover/logo:brightness-110 group-hover/logo:scale-[1.08] group-hover/logo:drop-shadow-[0_0_30px_rgba(56,189,248,0.9)]"
+                          style={{
+                            filter:
+                              "drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3))",
+                            maxHeight: "100%",
+                            maxWidth: "100%",
+                            objectFit: "contain",
+                          }}
+                          onError={(e) => {
+                            // Fallback to text if image not found
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = "none";
+                            const fallback =
+                              target.parentElement?.querySelector(
+                                ".logo-fallback",
+                              );
+                            if (fallback) {
+                              (fallback as HTMLElement).style.display = "flex";
+                            }
+                          }}
+                        />
+                      </div>
+
+                      {/* Fallback text logo (hidden by default, shown if image fails to load) */}
+                      <div className="logo-fallback hidden items-center justify-center h-full w-full font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl text-slate-900 px-4">
+                        MEJIAN GLOBAL TECHNOLOGY LIMITED
+                      </div>
+                    </div>
+
+                    {/* Outer animated border glow */}
+                    <div className="absolute -inset-1 rounded-2xl border-[4px] border-cyan-400/0 group-hover/logo:border-cyan-400/60 transition-all duration-500 pointer-events-none opacity-0 group-hover/logo:opacity-100 blur-md" />
                   </div>
-                </div>
-                <div>
-                  <span className="font-bold text-xl text-slate-100 block">
-                    MEJIAN
-                  </span>
-                  <span className="text-sm text-slate-400">
-                    Global Technology
-                  </span>
                 </div>
               </Link>
 
@@ -177,7 +228,8 @@ const Footer = () => {
                     <MapPin className="h-4 w-4 text-emerald-400 group-hover/contact:drop-shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
                   </div>
                   <span className="text-sm text-slate-300 group-hover/contact:text-emerald-300 transition-colors duration-300 leading-relaxed flex-1 min-w-0">
-                    Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong
+                    Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong
+                    Kong
                   </span>
                   <ArrowRight className="h-3 w-3 text-emerald-400 opacity-0 group-hover/contact:opacity-100 transition-opacity duration-300 flex-shrink-0" />
                 </a>
@@ -328,11 +380,14 @@ const Footer = () => {
                       Registered Business Address
                     </p>
                     <p className="text-sm text-slate-300 leading-relaxed group-hover/address:text-emerald-200 transition-colors duration-300">
-                      Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong
+                      Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong
+                      Kong
                     </p>
                     <div className="mt-2 flex items-center gap-2 opacity-0 group-hover/address:opacity-100 transition-opacity duration-300">
                       <ArrowRight className="h-3 w-3 text-emerald-400" />
-                      <span className="text-xs text-emerald-400">View on Google Maps</span>
+                      <span className="text-xs text-emerald-400">
+                        View on Google Maps
+                      </span>
                     </div>
                   </div>
                 </a>
@@ -373,7 +428,10 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-800">
               <div className="flex items-center gap-2 text-xs text-slate-500">
                 <Star className="h-3.5 w-3.5 text-cyan-400/60" />
-                <span>© {new Date().getFullYear()} MEJIAN GLOBAL TECHNOLOGY LIMITED. All rights reserved.</span>
+                <span>
+                  © {new Date().getFullYear()} MEJIAN GLOBAL TECHNOLOGY LIMITED.
+                  All rights reserved.
+                </span>
               </div>
               <div className="flex items-center gap-4 text-xs text-slate-500">
                 <a
@@ -405,6 +463,13 @@ const Footer = () => {
         @keyframes footerShimmer {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(200%); }
+        }
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.7; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.1); }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 3s ease-in-out infinite;
         }
       `}</style>
     </footer>

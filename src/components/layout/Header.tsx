@@ -124,36 +124,77 @@ const Header = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 group/logo relative overflow-hidden"
+            className="flex items-center group/logo relative h-full"
             aria-label={`${companyName} – Home`}
             style={{
               opacity: mounted ? 1 : 0,
-              transform: mounted ? "translateX(0) scale(1)" : "translateX(-12px) scale(0.96)",
-              transition: "opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.34,1.56,0.64,1)",
+              transform: mounted
+                ? "translateX(0) scale(1)"
+                : "translateX(-12px) scale(0.96)",
+              transition:
+                "opacity 0.5s cubic-bezier(0.4,0,0.2,1), transform 0.5s cubic-bezier(0.34,1.56,0.64,1)",
             }}
           >
-            <div className="relative flex-shrink-0">
-              <div
-                className="absolute inset-0 rounded-lg bg-cyan-500/20 blur-md opacity-0 scale-150 group-hover/logo:opacity-60 group-hover/logo:scale-110 transition-all duration-500 pointer-events-none"
-                aria-hidden
-              />
-              <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex items-center justify-center transition-all duration-300 group-hover/logo:border-cyan-500/50 group-hover/logo:from-cyan-500/25 group-hover/logo:to-blue-500/25 group-hover/logo:scale-105 group-hover/logo:shadow-[0_0_20px_rgba(6,182,212,0.25)]">
-                <span className="text-cyan-400 font-bold text-base md:text-lg transition-transform duration-300 group-hover/logo:scale-110">
-                  M
-                </span>
+            <div className="relative h-full flex items-center">
+              {/* Outer glow ring */}
+              <div className="absolute -inset-3 bg-gradient-to-r from-cyan-400 via-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover/logo:opacity-100 blur-2xl transition-opacity duration-700 rounded-xl animate-pulse-slow" />
+
+              {/* Inner glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/50 to-cyan-500/0 opacity-0 group-hover/logo:opacity-100 transition-opacity duration-500 rounded-xl" />
+
+              {/* Logo image container */}
+              <div className="relative h-full flex items-center">
+                {/* Glow backdrop */}
+                <div className="absolute -inset-1.5 bg-gradient-to-r from-cyan-400/30 via-blue-400/30 via-purple-400/30 to-pink-400/30 opacity-0 group-hover/logo:opacity-100 blur-lg transition-opacity duration-500 rounded-xl" />
+
+                {/* Logo image with white background */}
+                <div className="relative bg-white rounded-xl shadow-2xl border-[3px] border-cyan-400/30 group-hover/logo:border-cyan-400/80 transition-all duration-500 group-hover/logo:shadow-[0_0_45px_rgba(56,189,248,1)] group-hover/logo:scale-[1.03] h-[52px] sm:h-[56px] md:h-[60px] px-4 sm:px-5 md:px-6 min-w-[140px] sm:min-w-[160px] md:min-w-[180px] flex items-center justify-center">
+                  {/* White background base */}
+                  <div className="absolute inset-0 bg-white rounded-xl" />
+
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-slate-50/30 rounded-xl opacity-95" />
+
+                  {/* Shimmer overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent opacity-0 group-hover/logo:opacity-100 -translate-x-full group-hover/logo:translate-x-full transition-all duration-1000 rounded-xl" />
+
+                  {/* Animated border glow */}
+                  <div className="absolute -inset-1 rounded-xl border-[3px] border-cyan-400/0 group-hover/logo:border-cyan-400/80 transition-all duration-500 pointer-events-none opacity-0 group-hover/logo:opacity-100" />
+
+                  {/* Logo image */}
+                  <div className="relative z-10 flex items-center justify-center h-full w-full">
+                    <img
+                      src="/logo-mejian.png"
+                      alt="MEJIAN Global Technology Logo"
+                      className="h-[40px] sm:h-[44px] md:h-[48px] w-auto max-w-full object-contain transition-all duration-500 group-hover/logo:brightness-110 group-hover/logo:scale-[1.06] group-hover/logo:drop-shadow-[0_0_25px_rgba(56,189,248,0.8)]"
+                      style={{
+                        filter: "drop-shadow(0 3px 10px rgba(0, 0, 0, 0.25))",
+                        maxHeight: "100%",
+                        maxWidth: "100%",
+                        objectFit: "contain",
+                      }}
+                      onError={(e) => {
+                        // Fallback to text if image not found
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = "none";
+                        const fallback =
+                          target.parentElement?.querySelector(".logo-fallback");
+                        if (fallback) {
+                          (fallback as HTMLElement).style.display = "flex";
+                        }
+                      }}
+                    />
+                  </div>
+
+                  {/* Fallback text logo (hidden by default, shown if image fails to load) */}
+                  <div className="logo-fallback hidden items-center justify-center h-full w-full font-bold text-sm sm:text-base md:text-lg text-slate-900 px-3">
+                    {companyName}
+                  </div>
+                </div>
+
+                {/* Outer animated border glow */}
+                <div className="absolute -inset-1 rounded-xl border-[3px] border-cyan-400/0 group-hover/logo:border-cyan-400/60 transition-all duration-500 pointer-events-none opacity-0 group-hover/logo:opacity-100 blur-md" />
               </div>
-              <div
-                className="absolute inset-0 rounded-lg bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/logo:translate-x-full transition-transform duration-700 ease-out pointer-events-none"
-                aria-hidden
-              />
-            </div>
-            <div className="hidden sm:block">
-              <span className="font-bold text-sm md:text-base text-slate-100 group-hover/logo:text-cyan-300 transition-colors duration-300 block leading-tight">
-                {companyName}
-              </span>
-              <span className="text-[10px] text-slate-500 font-medium group-hover/logo:text-slate-400 transition-colors duration-300">
-                {companyTagline}
-              </span>
             </div>
           </Link>
 
@@ -325,7 +366,9 @@ const Header = () => {
                 />
                 <span
                   className={`absolute bottom-0 left-0 h-0.5 bg-cyan-400 rounded-full transition-all duration-300 ease-out ${
-                    trustDropdownOpen ? "w-full" : "w-0 group-hover/trust:w-full"
+                    trustDropdownOpen
+                      ? "w-full"
+                      : "w-0 group-hover/trust:w-full"
                   }`}
                 />
               </button>
@@ -439,7 +482,8 @@ const Header = () => {
                         Registered Address
                       </p>
                       <p className="text-[10px] text-emerald-200/80 leading-relaxed break-words group-hover/addr:text-emerald-100 transition-colors duration-200">
-                        Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong
+                        Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong
+                        Kong
                       </p>
                     </div>
                     <ArrowRight className="h-3.5 w-3.5 text-emerald-400 opacity-0 group-hover/addr:opacity-100 transition-opacity duration-200 flex-shrink-0 mt-1" />
@@ -474,7 +518,8 @@ const Header = () => {
                   style={
                     trustDropdownOpen
                       ? {
-                          animation: "headerDropdownItem 0.35s ease-out 0.4s both",
+                          animation:
+                            "headerDropdownItem 0.35s ease-out 0.4s both",
                         }
                       : undefined
                   }
@@ -580,7 +625,9 @@ const Header = () => {
                 }`}
                 style={
                   mobileMenuOpen
-                    ? { animation: "headerMobileItem 0.35s ease-out 0.05s both" }
+                    ? {
+                        animation: "headerMobileItem 0.35s ease-out 0.05s both",
+                      }
                     : undefined
                 }
               >
@@ -619,7 +666,9 @@ const Header = () => {
                   >
                     <div
                       className={`p-2 rounded-lg transition-transform duration-200 ${
-                        isActive(cat.path) ? "bg-cyan-500/20" : "bg-slate-800/50"
+                        isActive(cat.path)
+                          ? "bg-cyan-500/20"
+                          : "bg-slate-800/50"
                       }`}
                     >
                       <Icon className="h-4 w-4" />
@@ -784,6 +833,15 @@ const Header = () => {
         .animate-headerBtnIn {
           animation: headerBtnIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s
             forwards;
+        }
+
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.7; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .animate-pulse-slow {
+          animation: pulse-slow 3s ease-in-out infinite;
         }
       `}</style>
     </header>
