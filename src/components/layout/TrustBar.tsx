@@ -19,7 +19,7 @@ const companyInfo = {
   name: "MEJIAN GLOBAL TECHNOLOGY LIMITED",
   tagline: "Global Technology Solutions",
   address: "Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong",
-  registrationNumber: "79695664-000-01-26-2",
+  registrationNumber: "79695664",
   email: "info@mejianglobal.com",
   phone: "+852 47486175",
   status: "Verified Business",
@@ -185,7 +185,7 @@ const TrustBar = () => {
                   "opacity 0.5s ease-out 0.3s, transform 0.5s cubic-bezier(0.4,0,0.2,1) 0.3s",
               }}
             >
-              <div 
+              <div
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/5 hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all duration-300 relative group/badge"
                 title={`Registration: ${companyInfo.registrationNumber}`}
               >
@@ -212,7 +212,10 @@ const TrustBar = () => {
                 </div>
               </div>
               <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/5 hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all duration-300 group/reg">
-                <FileText className="h-3 w-3 text-cyan-400 transition-transform duration-300 group-hover/reg:scale-110" aria-hidden />
+                <FileText
+                  className="h-3 w-3 text-cyan-400 transition-transform duration-300 group-hover/reg:scale-110"
+                  aria-hidden
+                />
                 <span className="text-[10px] font-semibold text-cyan-400/90 truncate max-w-[140px]">
                   {companyInfo.registrationNumber}
                 </span>
@@ -237,15 +240,19 @@ const TrustBar = () => {
                 aria-label={`Email us at ${companyInfo.email}`}
               >
                 <Mail className="h-3.5 w-3.5 flex-shrink-0 transition-transform duration-300 group-hover/email:scale-110 group-hover/email:text-purple-400" />
-                <span className="truncate max-w-[160px] sm:max-w-[200px]">{companyInfo.email}</span>
+                <span className="truncate max-w-[160px] sm:max-w-[200px]">
+                  {companyInfo.email}
+                </span>
               </a>
               <a
-                href={`tel:${companyInfo.phone.replace(/\s/g, '')}`}
+                href={`tel:${companyInfo.phone.replace(/\s/g, "")}`}
                 className="flex items-center gap-2 text-[11px] sm:text-xs text-slate-400 hover:text-blue-400 transition-colors duration-300 group/phone"
                 aria-label={`Call us at ${companyInfo.phone}`}
               >
                 <Phone className="h-3.5 w-3.5 flex-shrink-0 transition-transform duration-300 group-hover/phone:scale-110 group-hover/phone:text-blue-400" />
-                <span className="truncate max-w-[120px] sm:max-w-[140px]">{companyInfo.phone}</span>
+                <span className="truncate max-w-[120px] sm:max-w-[140px]">
+                  {companyInfo.phone}
+                </span>
               </a>
             </div>
           </div>

@@ -23,7 +23,7 @@ const documents = [
   {
     name: "Business Registration Certificate",
     status: "Available",
-    code: "79695664-000-01-26-2",
+    code: "79695664",
     placeholder: false,
     isCyan: true,
   },
@@ -59,7 +59,7 @@ const companyInfo = [
   {
     icon: FileText,
     label: "Business Registration Certificate Number",
-    value: "79695664-000-01-26-2",
+    value: "79695664",
     isLink: false,
     isCyan: false,
   },
@@ -124,7 +124,7 @@ const Compliance = () => {
             }
           });
         },
-        { threshold: 0.2, rootMargin: "0px 0px -100px 0px" }
+        { threshold: 0.2, rootMargin: "0px 0px -100px 0px" },
       );
       observer.observe(ref);
       observers.push(observer);
@@ -310,43 +310,54 @@ const Compliance = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {companyInfo.map((info, index) => {
                       const Icon = info.icon;
-                      const isCyan = info.isCyan !== undefined ? info.isCyan : index % 2 === 0;
-                      const iconColorClass = isCyan ? "text-cyan-400" : info.icon === Mail ? "text-purple-400" : info.icon === Phone ? "text-cyan-400" : info.icon === FileText ? "text-emerald-400" : "text-blue-400";
+                      const isCyan =
+                        info.isCyan !== undefined
+                          ? info.isCyan
+                          : index % 2 === 0;
+                      const iconColorClass = isCyan
+                        ? "text-cyan-400"
+                        : info.icon === Mail
+                          ? "text-purple-400"
+                          : info.icon === Phone
+                            ? "text-cyan-400"
+                            : info.icon === FileText
+                              ? "text-emerald-400"
+                              : "text-blue-400";
                       const borderColorClass = isCyan
                         ? "border-cyan-500/30 hover:border-cyan-500/50"
                         : info.icon === Mail
-                        ? "border-purple-500/30 hover:border-purple-500/50"
-                        : info.icon === FileText
-                        ? "border-emerald-500/30 hover:border-emerald-500/50"
-                        : "border-blue-500/30 hover:border-blue-500/50";
+                          ? "border-purple-500/30 hover:border-purple-500/50"
+                          : info.icon === FileText
+                            ? "border-emerald-500/30 hover:border-emerald-500/50"
+                            : "border-blue-500/30 hover:border-blue-500/50";
                       const gradientClass = isCyan
                         ? "from-cyan-500/10 to-blue-500/10"
                         : info.icon === Mail
-                        ? "from-purple-500/10 to-pink-500/10"
-                        : info.icon === FileText
-                        ? "from-emerald-500/10 to-teal-500/10"
-                        : "from-blue-500/10 to-cyan-500/10";
+                          ? "from-purple-500/10 to-pink-500/10"
+                          : info.icon === FileText
+                            ? "from-emerald-500/10 to-teal-500/10"
+                            : "from-blue-500/10 to-cyan-500/10";
                       const hoverTextClass = isCyan
                         ? "group-hover/item:text-cyan-200"
                         : info.icon === Mail
-                        ? "group-hover/item:text-purple-200"
-                        : info.icon === FileText
-                        ? "group-hover/item:text-emerald-200"
-                        : "group-hover/item:text-blue-200";
+                          ? "group-hover/item:text-purple-200"
+                          : info.icon === FileText
+                            ? "group-hover/item:text-emerald-200"
+                            : "group-hover/item:text-blue-200";
                       const labelHoverClass = isCyan
                         ? "group-hover/item:text-cyan-400"
                         : info.icon === Mail
-                        ? "group-hover/item:text-purple-400"
-                        : info.icon === FileText
-                        ? "group-hover/item:text-emerald-400"
-                        : "group-hover/item:text-blue-400";
+                          ? "group-hover/item:text-purple-400"
+                          : info.icon === FileText
+                            ? "group-hover/item:text-emerald-400"
+                            : "group-hover/item:text-blue-400";
                       const iconBorderClass = isCyan
                         ? "border-cyan-500/20"
                         : info.icon === Mail
-                        ? "border-purple-500/20"
-                        : info.icon === FileText
-                        ? "border-emerald-500/20"
-                        : "border-blue-500/20";
+                          ? "border-purple-500/20"
+                          : info.icon === FileText
+                            ? "border-emerald-500/20"
+                            : "border-blue-500/20";
 
                       const content = (
                         <>
@@ -365,7 +376,9 @@ const Compliance = () => {
                             </p>
                             <p
                               className={`text-sm md:text-base text-slate-100 font-medium leading-relaxed ${hoverTextClass} transition-colors duration-300 break-words ${
-                                info.isLink ? "inline-flex items-center gap-2" : ""
+                                info.isLink
+                                  ? "inline-flex items-center gap-2"
+                                  : ""
                               }`}
                             >
                               {info.value}
@@ -389,7 +402,11 @@ const Compliance = () => {
                           {info.isLink ? (
                             <a
                               href={info.link}
-                              target={info.link?.startsWith("http") ? "_blank" : undefined}
+                              target={
+                                info.link?.startsWith("http")
+                                  ? "_blank"
+                                  : undefined
+                              }
                               rel={
                                 info.link?.startsWith("http")
                                   ? "noopener noreferrer"
@@ -403,7 +420,9 @@ const Compliance = () => {
                               {content}
                             </a>
                           ) : (
-                            <div className="flex items-start gap-3">{content}</div>
+                            <div className="flex items-start gap-3">
+                              {content}
+                            </div>
                           )}
                         </div>
                       );
@@ -426,7 +445,7 @@ const Compliance = () => {
                           Business Registration Certificate Number
                         </p>
                         <p className="text-sm font-bold text-emerald-300 break-all">
-                          79695664-000-01-26-2
+                          79695664
                         </p>
                       </div>
                     </div>

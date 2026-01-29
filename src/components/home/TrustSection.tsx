@@ -64,7 +64,7 @@ const companyInfo = [
   {
     icon: FileText,
     label: "Business Registration Certificate Number",
-    value: "79695664-000-01-26-2",
+    value: "79695664",
     isLink: false,
     isCyan: true,
   },
@@ -116,7 +116,7 @@ const TrustSection = () => {
             }
           });
         },
-        { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
+        { threshold: 0.2, rootMargin: "0px 0px -50px 0px" },
       );
       observer.observe(ref);
       observers.push(observer);
@@ -266,8 +266,11 @@ const TrustSection = () => {
                 <div className="space-y-4">
                   {companyInfo.map((info, index) => {
                     const Icon = info.icon;
-                    const isCyan = info.isCyan !== undefined ? info.isCyan : index % 2 === 0;
-                    const iconColorClass = isCyan ? "text-cyan-400" : "text-blue-400";
+                    const isCyan =
+                      info.isCyan !== undefined ? info.isCyan : index % 2 === 0;
+                    const iconColorClass = isCyan
+                      ? "text-cyan-400"
+                      : "text-blue-400";
                     const borderColorClass = isCyan
                       ? "border-cyan-500/30 hover:border-cyan-500/50"
                       : "border-blue-500/30 hover:border-blue-500/50";
@@ -286,7 +289,9 @@ const TrustSection = () => {
                         <div
                           className={`flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br ${gradientClass} flex items-center justify-center border ${borderColorClass} group-hover/info:scale-110 transition-all duration-300`}
                         >
-                          <Icon className={`h-5 w-5 ${iconColorClass} group-hover/info:drop-shadow-[0_0_8px_currentColor]`} />
+                          <Icon
+                            className={`h-5 w-5 ${iconColorClass} group-hover/info:drop-shadow-[0_0_8px_currentColor]`}
+                          />
                         </div>
                         <div className="flex-1 min-w-0">
                           <p
@@ -296,7 +301,9 @@ const TrustSection = () => {
                           </p>
                           <p
                             className={`text-sm md:text-base text-slate-200 leading-relaxed font-medium ${hoverTextClass} transition-colors duration-300 break-words ${
-                              info.isLink ? "inline-flex items-center gap-2" : ""
+                              info.isLink
+                                ? "inline-flex items-center gap-2"
+                                : ""
                             }`}
                           >
                             {info.value}
@@ -323,7 +330,11 @@ const TrustSection = () => {
                         {info.isLink ? (
                           <a
                             href={info.link}
-                            target={info.link?.startsWith("http") ? "_blank" : undefined}
+                            target={
+                              info.link?.startsWith("http")
+                                ? "_blank"
+                                : undefined
+                            }
                             rel={
                               info.link?.startsWith("http")
                                 ? "noopener noreferrer"
@@ -359,7 +370,7 @@ const TrustSection = () => {
                         Registration Number
                       </p>
                       <p className="text-sm font-bold text-emerald-300 break-all">
-                        79695664-000-01-26-2
+                        79695664
                       </p>
                     </div>
                   </div>
@@ -468,9 +479,7 @@ const TrustSection = () => {
                         </span>
                         <div
                           className={`w-4 h-4 rounded-full flex items-center justify-center ${
-                            badge.isCyan
-                              ? "bg-cyan-500/20"
-                              : "bg-blue-500/20"
+                            badge.isCyan ? "bg-cyan-500/20" : "bg-blue-500/20"
                           }`}
                         >
                           <div

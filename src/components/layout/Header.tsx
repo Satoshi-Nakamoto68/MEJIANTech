@@ -456,7 +456,7 @@ const Header = () => {
                         Business Registration
                       </p>
                       <p className="text-[10px] text-emerald-200/80 leading-relaxed break-all">
-                        79695664-000-01-26-2
+                        79695664
                       </p>
                     </div>
                   </div>

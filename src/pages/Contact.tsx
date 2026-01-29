@@ -81,7 +81,7 @@ const Contact = () => {
             }
           });
         },
-        { threshold: 0.2, rootMargin: "0px 0px -100px 0px" }
+        { threshold: 0.2, rootMargin: "0px 0px -100px 0px" },
       );
       observer.observe(ref);
       observers.push(observer);
@@ -276,7 +276,9 @@ const Contact = () => {
                       {info.href ? (
                         <a
                           href={info.href}
-                          target={info.href.startsWith("http") ? "_blank" : undefined}
+                          target={
+                            info.href.startsWith("http") ? "_blank" : undefined
+                          }
                           rel={
                             info.href.startsWith("http")
                               ? "noopener noreferrer"
@@ -287,8 +289,8 @@ const Contact = () => {
                             boxShadow: info.isCyan
                               ? "0 0 0 0 rgba(6, 182, 212, 0)"
                               : info.iconColor.includes("emerald")
-                              ? "0 0 0 0 rgba(16, 185, 129, 0)"
-                              : "0 0 0 0 rgba(168, 85, 247, 0)",
+                                ? "0 0 0 0 rgba(16, 185, 129, 0)"
+                                : "0 0 0 0 rgba(168, 85, 247, 0)",
                           }}
                           onMouseEnter={(e) => {
                             if (info.isCyan) {
@@ -303,7 +305,8 @@ const Contact = () => {
                             }
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.boxShadow = "0 0 0 0 transparent";
+                            e.currentTarget.style.boxShadow =
+                              "0 0 0 0 transparent";
                           }}
                         >
                           <div
@@ -328,8 +331,8 @@ const Contact = () => {
                                   info.isCyan
                                     ? "group-hover/info:text-cyan-400"
                                     : info.iconColor.includes("emerald")
-                                    ? "group-hover/info:text-emerald-400"
-                                    : "group-hover/info:text-purple-400"
+                                      ? "group-hover/info:text-emerald-400"
+                                      : "group-hover/info:text-purple-400"
                                 }`}
                               >
                                 {info.label}
@@ -339,8 +342,8 @@ const Contact = () => {
                                   info.isCyan
                                     ? "group-hover/info:text-cyan-200"
                                     : info.iconColor.includes("emerald")
-                                    ? "group-hover/info:text-emerald-200"
-                                    : "group-hover/info:text-purple-200"
+                                      ? "group-hover/info:text-emerald-200"
+                                      : "group-hover/info:text-purple-200"
                                 }`}
                               >
                                 {info.value}
@@ -351,8 +354,8 @@ const Contact = () => {
                                 info.isCyan
                                   ? "group-hover/info:text-cyan-400"
                                   : info.iconColor.includes("emerald")
-                                  ? "group-hover/info:text-emerald-400"
-                                  : "group-hover/info:text-purple-400"
+                                    ? "group-hover/info:text-emerald-400"
+                                    : "group-hover/info:text-purple-400"
                               }`}
                             />
                           </div>
@@ -362,8 +365,8 @@ const Contact = () => {
                               info.isCyan
                                 ? "from-cyan-500 via-blue-500 to-cyan-500"
                                 : info.iconColor.includes("emerald")
-                                ? "from-emerald-500 via-teal-500 to-emerald-500"
-                                : "from-purple-500 via-pink-500 to-purple-500"
+                                  ? "from-emerald-500 via-teal-500 to-emerald-500"
+                                  : "from-purple-500 via-pink-500 to-purple-500"
                             }`}
                           />
                         </a>
@@ -435,7 +438,7 @@ const Contact = () => {
                           Business Registration Certificate Number
                         </p>
                         <p className="text-sm font-bold text-emerald-300 break-all">
-                          79695664-000-01-26-2
+                          79695664
                         </p>
                       </div>
                     </div>

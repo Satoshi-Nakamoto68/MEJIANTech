@@ -126,7 +126,9 @@ const Returns = () => {
       content: (
         <div className="space-y-4">
           <p className="text-slate-400">
-            If you receive a damaged or defective item, please contact us within 48 hours of delivery with photos of the damage. We will arrange for a replacement or full refund including original shipping costs.
+            If you receive a damaged or defective item, please contact us within
+            48 hours of delivery with photos of the damage. We will arrange for
+            a replacement or full refund including original shipping costs.
           </p>
           <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/30 hover:border-purple-500/30 transition-colors duration-300">
             <a
@@ -174,21 +176,25 @@ const Returns = () => {
             <div className="flex items-start gap-3 mb-3">
               <Building2 className="h-5 w-5 text-cyan-400 flex-shrink-0 mt-0.5" />
               <div className="flex-1">
-                <strong className="text-cyan-300 block mb-1">Company Name:</strong>
+                <strong className="text-cyan-300 block mb-1">
+                  Company Name:
+                </strong>
                 <span className="text-slate-300 font-medium">
                   MEJIAN GLOBAL TECHNOLOGY LIMITED
                 </span>
               </div>
             </div>
           </div>
-          
+
           <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/30">
             <div className="flex items-start gap-3 mb-3">
               <FileText className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
               <div className="flex-1">
-                <strong className="text-emerald-300 block mb-1">Business Registration Certificate Number:</strong>
+                <strong className="text-emerald-300 block mb-1">
+                  Business Registration Certificate Number:
+                </strong>
                 <span className="text-slate-300 font-medium break-all">
-                  79695664-000-01-26-2
+                  79695664
                 </span>
               </div>
             </div>
@@ -203,7 +209,9 @@ const Returns = () => {
             >
               <MapPin className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5 group-hover/link:scale-110 transition-transform duration-300" />
               <div className="flex-1">
-                <strong className="text-emerald-300 block mb-1">Registered Business Address:</strong>
+                <strong className="text-emerald-300 block mb-1">
+                  Registered Business Address:
+                </strong>
                 <span className="text-slate-300 font-medium break-words group-hover/link:text-emerald-200 transition-colors duration-300 inline-flex items-center gap-2">
                   Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong
                   <ArrowRight className="h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
@@ -472,7 +480,7 @@ const Returns = () => {
                           Business Registration Certificate Number
                         </p>
                         <p className="text-sm font-bold text-emerald-300 break-all">
-                          79695664-000-01-26-2
+                          79695664
                         </p>
                       </div>
                     </div>

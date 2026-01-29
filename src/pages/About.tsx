@@ -77,7 +77,7 @@ const companyInfo = [
   {
     icon: FileText,
     label: "Business Registration Certificate Number",
-    value: "79695664-000-01-26-2",
+    value: "79695664",
     isLink: false,
     isCyan: false,
   },
@@ -144,7 +144,7 @@ const About = () => {
             }
           });
         },
-        { threshold: 0.2, rootMargin: "0px 0px -100px 0px" }
+        { threshold: 0.2, rootMargin: "0px 0px -100px 0px" },
       );
       observer.observe(ref);
       observers.push(observer);
@@ -481,8 +481,13 @@ const About = () => {
                   <div className="space-y-6">
                     {companyInfo.map((info, index) => {
                       const Icon = info.icon;
-                      const isCyan = info.isCyan !== undefined ? info.isCyan : index % 2 === 0;
-                      const iconColorClass = isCyan ? "text-cyan-400" : "text-blue-400";
+                      const isCyan =
+                        info.isCyan !== undefined
+                          ? info.isCyan
+                          : index % 2 === 0;
+                      const iconColorClass = isCyan
+                        ? "text-cyan-400"
+                        : "text-blue-400";
                       const borderColorClass = isCyan
                         ? "border-cyan-500/30 hover:border-cyan-500/50"
                         : "border-blue-500/30 hover:border-blue-500/50";
@@ -516,7 +521,9 @@ const About = () => {
                             </p>
                             <p
                               className={`text-base md:text-lg text-slate-100 leading-relaxed font-medium ${hoverTextClass} transition-colors duration-300 break-words ${
-                                info.isLink ? "inline-flex items-center gap-2" : ""
+                                info.isLink
+                                  ? "inline-flex items-center gap-2"
+                                  : ""
                               }`}
                             >
                               {info.value}
@@ -539,7 +546,9 @@ const About = () => {
                           }`}
                           style={{
                             opacity: mounted ? 1 : 0,
-                            transform: mounted ? "translateX(0)" : "translateX(-20px)",
+                            transform: mounted
+                              ? "translateX(0)"
+                              : "translateX(-20px)",
                             transition: `opacity 0.6s ease-out ${
                               1 + index * 0.1
                             }s, transform 0.6s cubic-bezier(0.4,0,0.2,1) ${
@@ -550,7 +559,11 @@ const About = () => {
                           {info.isLink ? (
                             <a
                               href={info.link}
-                              target={info.link?.startsWith("http") ? "_blank" : undefined}
+                              target={
+                                info.link?.startsWith("http")
+                                  ? "_blank"
+                                  : undefined
+                              }
                               rel={
                                 info.link?.startsWith("http")
                                   ? "noopener noreferrer"
@@ -587,7 +600,7 @@ const About = () => {
                           Business Registration Certificate Number
                         </p>
                         <p className="text-sm font-bold text-emerald-300 break-all">
-                          79695664-000-01-26-2
+                          79695664
                         </p>
                       </div>
                     </div>

@@ -197,7 +197,9 @@ const Privacy = () => {
                       className="group/section"
                       style={{
                         opacity: mounted ? 1 : 0,
-                        transform: mounted ? "translateY(0)" : "translateY(20px)",
+                        transform: mounted
+                          ? "translateY(0)"
+                          : "translateY(20px)",
                         transition:
                           "opacity 0.7s cubic-bezier(0.4,0,0.2,1) 0.3s, transform 0.7s cubic-bezier(0.4,0,0.2,1) 0.3s",
                       }}
@@ -212,8 +214,8 @@ const Privacy = () => {
                       </div>
                       <p className="text-slate-400 leading-relaxed ml-14">
                         MEJIAN GLOBAL TECHNOLOGY LIMITED ("we," "us," or "our")
-                        respects your privacy and is committed to protecting your
-                        personal data. This privacy policy explains how we
+                        respects your privacy and is committed to protecting
+                        your personal data. This privacy policy explains how we
                         collect, use, and safeguard your information.
                       </p>
                     </section>
@@ -222,7 +224,9 @@ const Privacy = () => {
                       className="group/section"
                       style={{
                         opacity: mounted ? 1 : 0,
-                        transform: mounted ? "translateY(0)" : "translateY(20px)",
+                        transform: mounted
+                          ? "translateY(0)"
+                          : "translateY(20px)",
                         transition:
                           "opacity 0.7s cubic-bezier(0.4,0,0.2,1) 0.4s, transform 0.7s cubic-bezier(0.4,0,0.2,1) 0.4s",
                       }}
@@ -239,25 +243,33 @@ const Privacy = () => {
                         <li className="flex items-start gap-3">
                           <div className="w-2 h-2 rounded-full bg-cyan-400 mt-2 flex-shrink-0" />
                           <div>
-                            <strong className="text-cyan-300">Contact Information:</strong>{" "}
+                            <strong className="text-cyan-300">
+                              Contact Information:
+                            </strong>{" "}
                             <span className="text-slate-400">
-                              Name, email address, phone number, shipping address
+                              Name, email address, phone number, shipping
+                              address
                             </span>
                           </div>
                         </li>
                         <li className="flex items-start gap-3">
                           <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
                           <div>
-                            <strong className="text-blue-300">Payment Information:</strong>{" "}
+                            <strong className="text-blue-300">
+                              Payment Information:
+                            </strong>{" "}
                             <span className="text-slate-400">
-                              Credit card details (processed securely by payment providers)
+                              Credit card details (processed securely by payment
+                              providers)
                             </span>
                           </div>
                         </li>
                         <li className="flex items-start gap-3">
                           <div className="w-2 h-2 rounded-full bg-cyan-400 mt-2 flex-shrink-0" />
                           <div>
-                            <strong className="text-cyan-300">Order Information:</strong>{" "}
+                            <strong className="text-cyan-300">
+                              Order Information:
+                            </strong>{" "}
                             <span className="text-slate-400">
                               Products purchased, order history
                             </span>
@@ -266,7 +278,9 @@ const Privacy = () => {
                         <li className="flex items-start gap-3">
                           <div className="w-2 h-2 rounded-full bg-blue-400 mt-2 flex-shrink-0" />
                           <div>
-                            <strong className="text-blue-300">Technical Data:</strong>{" "}
+                            <strong className="text-blue-300">
+                              Technical Data:
+                            </strong>{" "}
                             <span className="text-slate-400">
                               IP address, browser type, device information
                             </span>
@@ -279,7 +293,9 @@ const Privacy = () => {
                       className="group/section"
                       style={{
                         opacity: mounted ? 1 : 0,
-                        transform: mounted ? "translateY(0)" : "translateY(20px)",
+                        transform: mounted
+                          ? "translateY(0)"
+                          : "translateY(20px)",
                         transition:
                           "opacity 0.7s cubic-bezier(0.4,0,0.2,1) 0.5s, transform 0.7s cubic-bezier(0.4,0,0.2,1) 0.5s",
                       }}
@@ -330,7 +346,9 @@ const Privacy = () => {
                       className="group/section"
                       style={{
                         opacity: mounted ? 1 : 0,
-                        transform: mounted ? "translateY(0)" : "translateY(20px)",
+                        transform: mounted
+                          ? "translateY(0)"
+                          : "translateY(20px)",
                         transition:
                           "opacity 0.7s cubic-bezier(0.4,0,0.2,1) 0.6s, transform 0.7s cubic-bezier(0.4,0,0.2,1) 0.6s",
                       }}
@@ -355,7 +373,9 @@ const Privacy = () => {
                       className="group/section"
                       style={{
                         opacity: mounted ? 1 : 0,
-                        transform: mounted ? "translateY(0)" : "translateY(20px)",
+                        transform: mounted
+                          ? "translateY(0)"
+                          : "translateY(20px)",
                         transition:
                           "opacity 0.7s cubic-bezier(0.4,0,0.2,1) 0.7s, transform 0.7s cubic-bezier(0.4,0,0.2,1) 0.7s",
                       }}
@@ -372,7 +392,8 @@ const Privacy = () => {
                         We do not sell your personal information. We may share
                         your data with trusted third parties who assist us in
                         operating our website, processing payments, and
-                        delivering orders, subject to confidentiality agreements.
+                        delivering orders, subject to confidentiality
+                        agreements.
                       </p>
                     </section>
 
@@ -380,7 +401,9 @@ const Privacy = () => {
                       className="group/section"
                       style={{
                         opacity: mounted ? 1 : 0,
-                        transform: mounted ? "translateY(0)" : "translateY(20px)",
+                        transform: mounted
+                          ? "translateY(0)"
+                          : "translateY(20px)",
                         transition:
                           "opacity 0.7s cubic-bezier(0.4,0,0.2,1) 0.8s, transform 0.7s cubic-bezier(0.4,0,0.2,1) 0.8s",
                       }}
@@ -396,7 +419,8 @@ const Privacy = () => {
                       <div className="ml-14 space-y-4">
                         <p className="text-slate-400 leading-relaxed">
                           You have the right to access, correct, or delete your
-                          personal data. To exercise these rights, please contact us:
+                          personal data. To exercise these rights, please
+                          contact us:
                         </p>
                         <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/30 hover:border-purple-500/30 transition-colors duration-300">
                           <a
@@ -429,7 +453,9 @@ const Privacy = () => {
                       className="group/section"
                       style={{
                         opacity: mounted ? 1 : 0,
-                        transform: mounted ? "translateY(0)" : "translateY(20px)",
+                        transform: mounted
+                          ? "translateY(0)"
+                          : "translateY(20px)",
                         transition:
                           "opacity 0.7s cubic-bezier(0.4,0,0.2,1) 0.9s, transform 0.7s cubic-bezier(0.4,0,0.2,1) 0.9s",
                       }}
@@ -453,7 +479,9 @@ const Privacy = () => {
                       className="group/section pt-6 border-t border-slate-700/50"
                       style={{
                         opacity: mounted ? 1 : 0,
-                        transform: mounted ? "translateY(0)" : "translateY(20px)",
+                        transform: mounted
+                          ? "translateY(0)"
+                          : "translateY(20px)",
                         transition:
                           "opacity 0.7s cubic-bezier(0.4,0,0.2,1) 1s, transform 0.7s cubic-bezier(0.4,0,0.2,1) 1s",
                       }}
@@ -470,12 +498,14 @@ const Privacy = () => {
                         <p className="text-slate-400">
                           For privacy-related inquiries, please contact:
                         </p>
-                        
+
                         <div className="p-4 rounded-xl bg-slate-800/50 border border-slate-700/30">
                           <div className="flex items-start gap-3 mb-3">
                             <Building2 className="h-5 w-5 text-cyan-400 flex-shrink-0 mt-0.5" />
                             <div className="flex-1">
-                              <strong className="text-cyan-300 block mb-1">Company Name:</strong>
+                              <strong className="text-cyan-300 block mb-1">
+                                Company Name:
+                              </strong>
                               <span className="text-slate-300 font-medium">
                                 MEJIAN GLOBAL TECHNOLOGY LIMITED
                               </span>
@@ -487,9 +517,11 @@ const Privacy = () => {
                           <div className="flex items-start gap-3 mb-3">
                             <FileText className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5" />
                             <div className="flex-1">
-                              <strong className="text-emerald-300 block mb-1">Business Registration Certificate Number:</strong>
+                              <strong className="text-emerald-300 block mb-1">
+                                Business Registration Certificate Number:
+                              </strong>
                               <span className="text-slate-300 font-medium break-all">
-                                79695664-000-01-26-2
+                                79695664
                               </span>
                             </div>
                           </div>
@@ -504,9 +536,12 @@ const Privacy = () => {
                           >
                             <MapPin className="h-5 w-5 text-emerald-400 flex-shrink-0 mt-0.5 group-hover/link:scale-110 transition-transform duration-300" />
                             <div className="flex-1">
-                              <strong className="text-emerald-300 block mb-1">Registered Business Address:</strong>
+                              <strong className="text-emerald-300 block mb-1">
+                                Registered Business Address:
+                              </strong>
                               <span className="text-slate-300 font-medium break-words group-hover/link:text-emerald-200 transition-colors duration-300 inline-flex items-center gap-2">
-                                Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun Tong, Hong Kong
+                                Unit 2610, APEC Plaza, 49 Hoi Yuen Road, Kwun
+                                Tong, Hong Kong
                                 <ArrowRight className="h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
                               </span>
                             </div>
@@ -520,7 +555,9 @@ const Privacy = () => {
                           >
                             <Mail className="h-5 w-5 text-purple-400 flex-shrink-0 group-hover/link:scale-110 transition-transform duration-300" />
                             <div className="flex-1">
-                              <strong className="text-purple-300 block mb-1">Email:</strong>
+                              <strong className="text-purple-300 block mb-1">
+                                Email:
+                              </strong>
                               <span className="text-purple-300 font-medium group-hover/link:text-purple-200 transition-colors duration-300 inline-flex items-center gap-2">
                                 info@mejianglobal.com
                                 <ArrowRight className="h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
@@ -536,7 +573,9 @@ const Privacy = () => {
                           >
                             <Phone className="h-5 w-5 text-cyan-400 flex-shrink-0 group-hover/link:scale-110 transition-transform duration-300" />
                             <div className="flex-1">
-                              <strong className="text-cyan-300 block mb-1">Phone:</strong>
+                              <strong className="text-cyan-300 block mb-1">
+                                Phone:
+                              </strong>
                               <span className="text-cyan-300 font-medium group-hover/link:text-cyan-200 transition-colors duration-300 inline-flex items-center gap-2">
                                 +852 47486175
                                 <ArrowRight className="h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity duration-300" />
@@ -564,7 +603,7 @@ const Privacy = () => {
                           Business Registration Certificate Number
                         </p>
                         <p className="text-sm font-bold text-emerald-300 break-all">
-                          79695664-000-01-26-2
+                          79695664
                         </p>
                       </div>
                     </div>

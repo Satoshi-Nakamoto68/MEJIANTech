@@ -403,7 +403,7 @@ const Footer = () => {
                       Business Registration Certificate Number
                     </p>
                     <p className="text-sm font-bold text-cyan-300 leading-relaxed break-all">
-                      79695664-000-01-26-2
+                      79695664
                     </p>
                   </div>
                 </div>
